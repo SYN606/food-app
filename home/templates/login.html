@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}{% static 'css/login.css' %}{% endblock css %}
+
+
+{% block body_content %}
+
+{% comment %} navbar  {% endcomment %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+    </div>
+  </div>
+</nav>
+  {% comment %} login form area {% endcomment %}
+  <section id="login_form">
+    <div class="container mt-5">
+      <div class="row mt-5 justify-content-center align-items-center">
+        <div class="col-md-6">
+          <img src="{% static 'img/login-img.jpg' %}" class="img-fluid login-img" alt="404 | Error Image Not Found" />
+        </div>
+        <div class="col-md-6">
+          <h2 class="heading">Login</h2>
+          <hr />
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <hr />
+          <div class="additional-area">
+            <p>
+              <a href="{% url 'create_acc' %}">Register Now</a> or Go to <a href="{% url '/' %}">Homepage</a> now.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ {% comment %} footer {% endcomment %}
+  <section id="footer">
+    <div class="footer_area">
+      <div class="wave-svg_area">
+        <img src="{% static 'img/footer-wave.png' %}" class="img-fluid footer_img" alt="" />
+      </div>
+    </div>
+  </section>
+
+{% endblock body_content %}

@@ -1,0 +1,25 @@
+.navbar {
+    background-color: #ffdee9;
+    background-image: linear-gradient(90deg, #ffdee9 0%, #b5fffc 100%);
+}
+
+.login-img {
+    object-fit: cover;
+    border-radius: 1.5em;
+}
+
+@font-face {
+    font-family: 'Auvelle';
+    src: url('fonts/Auvelle.woff2') format('woff2');
+}
+
+.heading {
+    font-family: 'Auvelle';
+    font-weight: bolder;
+
+}
+
+/* footer css */
+.footer_img {
+    width: 100%;
+}

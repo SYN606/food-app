@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Playfair+Display&display=swap");
+
+/* raleway font */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
+
+
+@font-face {
+  font-family: 'Novara';
+  src: url('fonts/Novara.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Auvelle';
+  src: url('fonts/Auvelle.woff2') format('woff2');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar,
+.banner {
+  background-color: #ffdee9;
+  background-image: linear-gradient(90deg, #ffdee9 0%, #b5fffc 100%);
+}
+
+.banner-img {
+  border-radius: 1.5em;
+}
+
+.food-app_heading {
+  /* font-family: "Caveat", cursive; */
+  font-family: 'Novara';
+  font-weight: 500;
+  font-size: 3.5em;
+}
+
+.food-para {
+  /* font-family: sans-serif; */
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.5em;
+}
+
+.card-title {
+  font-family: 'Auvelle';
+  font-weight: 800;
+}
+
+.card_image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.card_title>.card-title {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.card_title>.card-title small {
+  font-size: small;
+  color: red;
+}
+
+.special-item_img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1.5em;
+}
+
+/* footer css */
+.footer_img {
+  width: 100%;
+}
