@@ -10,14 +10,14 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="{% url '/' %}">Food App</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url '/' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -35,18 +35,31 @@
         <div class="col-md-6">
           <h2 class="heading">Login</h2>
           <hr />
-          <form>
+          <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              {% comment %} <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" />
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> {% endcomment %}
+
+
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter Your Name" class="form-control">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" />
+              <label for="password" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="password" />
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-danger mt-3" role="alert">
+                  {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
           <hr />
           <div class="additional-area">
             <p>

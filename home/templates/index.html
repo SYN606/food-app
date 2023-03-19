@@ -3,194 +3,232 @@
 {% block css %}{% static 'css/main-style.css' %}{% endblock css %}
 
 {% block body_content %}
-  <!-- navbar -->
+<!-- navbar -->
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Food App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="#">Action</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Another action</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item border border-success rounded-2">
-            <a class="nav-link link-success" href="{% url 'login' %}">Login</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Food App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu menu">
+            <li>
+              <a class="dropdown-item" href="#">Action</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another action</a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path
+                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+            </svg>
+          </a>
+          <ul class="dropdown-menu menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item border border-success rounded-2">
+          <a class="nav-link link-success" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-  </nav>
-  <!-- navbar end -->
-  {% if messages %}
-    {% for message in messages %}
-    <div class="alert fade show message" role="alert">
-        <p> {{ message }} </p>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-  {% endif %}
-  <section id="banner_area">
-    <div class="banner pt-5">
-      <div class="container pt-5">
-        <div class="row justify-content-center align-items-center gap-5">
-          <div class="col-md-5">
-            <h3 class="food-app_heading">Food App</h3>
-            <hr class="p-0" />
-            <p class="food-para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dolorum distinctio itaque, nemo, doloribus possimus quia tempora placeat autem, eligendi rerum aut quae repellendus deserunt soluta ratione excepturi quasi impedit.</p>
-          </div>
+  </div>
+</nav>
+<!-- navbar end -->
+{% if messages %}
+{% for message in messages %}
+<div class="alert fade show message" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+<section id="banner_area">
+  <div class="banner pt-5">
+    <div class="container pt-5">
+      <div class="row justify-content-center align-items-center gap-5">
+        <div class="col-md-5">
+          <h3 class="food-app_heading">Food App</h3>
+          <hr class="p-0" />
+          <p class="food-para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dolorum distinctio
+            itaque, nemo, doloribus possimus quia tempora placeat autem, eligendi rerum aut quae repellendus deserunt
+            soluta ratione excepturi quasi impedit.</p>
+        </div>
 
-          <div class="col-md-4">
-            <img src="{% static 'img/banner-img.jpg' %}" class="img-fluid banner-img" alt="404 | Error Image Not Found" />
+        <div class="col-md-4">
+          <img src="{% static 'img/banner-img.jpg' %}" class="img-fluid banner-img" alt="404 | Error Image Not Found" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wave-effect">
+    <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
+      class="transition duration-300 ease-in-out delay-150">
+      <defs>
+        <linearGradient id="gradient" x1="100%" y1="50%" x2="0%" y2="50%">
+          <stop offset="5%" stop-color="#ffdee9"></stop>
+          <stop offset="95%" stop-color="#b5fffc"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        d="M 0,400 C 0,400 0,200 0,200 C 40.50551164450553,206.25135478072377 81.01102328901106,212.50270956144757 124,216 C 166.98897671098894,219.49729043855243 212.46141848846122,220.24051653493353 271,197 C 329.5385815115388,173.75948346506647 401.14330275714406,126.53522429881838 449,129 C 496.85669724285594,131.46477570118162 520.9653704829627,183.61858626979298 563,217 C 605.0346295170373,250.38141373020702 664.9952153110047,264.99043062200957 721,273 C 777.0047846889953,281.00956937799043 829.053768273018,282.4196912421687 869,258 C 908.946231726982,233.58030875783126 936.7897115969231,183.3308044093156 991,162 C 1045.210288403077,140.6691955906844 1125.7873853392898,148.25709112056887 1172,159 C 1218.2126146607102,169.74290887943113 1230.0607470459172,183.6408311084089 1269,191 C 1307.9392529540828,198.3591688915911 1373.9696264770414,199.17958444579557 1440,200 C 1440,200 1440,400 1440,400 Z"
+        stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"
+        class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 200)"></path>
+    </svg>
+  </div>
+</section>
+<section id="menu_area">
+  <div class="main_area-container">
+    <div class="container">
+      <div class="row justify-content-center align-items-center pb-5 gap-5">
+        <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/dessert.jpg' %}" class="card-img-top card_image"
+              alt="404 | Error Image Not Found" />
+            <div class="card-body">
+              <h3 class="card-title">Dessets</h3>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis nemo, iusto
+                ex error illo.</p>
+              <a href="#" class="btn btn-primary">Check recipes</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/sandwich.jpg' %}" class="card-img-top card_image"
+              alt="404 | Error Image Not Found" />
+            <div class="card-body">
+              <h3 class="card-title">Sandwich</h3>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis nemo, iusto
+                ex error illo.</p>
+              <a href="#" class="btn btn-primary">Check recipes</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/non-veg.jpg' %}" class="card-img-top card_image"
+              alt="404 | Error Image Not Found" />
+            <div class="card-body">
+              <h3 class="card-title">Eggs and Meat</h3>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis nemo, iusto
+                ex error illo.</p>
+              <a href="#" class="btn btn-primary">Check recipes</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="wave-effect">
-      <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
-        <defs>
-          <linearGradient id="gradient" x1="100%" y1="50%" x2="0%" y2="50%">
-            <stop offset="5%" stop-color="#ffdee9"></stop>
-            <stop offset="95%" stop-color="#b5fffc"></stop>
-          </linearGradient>
-        </defs>
-        <path d="M 0,400 C 0,400 0,200 0,200 C 40.50551164450553,206.25135478072377 81.01102328901106,212.50270956144757 124,216 C 166.98897671098894,219.49729043855243 212.46141848846122,220.24051653493353 271,197 C 329.5385815115388,173.75948346506647 401.14330275714406,126.53522429881838 449,129 C 496.85669724285594,131.46477570118162 520.9653704829627,183.61858626979298 563,217 C 605.0346295170373,250.38141373020702 664.9952153110047,264.99043062200957 721,273 C 777.0047846889953,281.00956937799043 829.053768273018,282.4196912421687 869,258 C 908.946231726982,233.58030875783126 936.7897115969231,183.3308044093156 991,162 C 1045.210288403077,140.6691955906844 1125.7873853392898,148.25709112056887 1172,159 C 1218.2126146607102,169.74290887943113 1230.0607470459172,183.6408311084089 1269,191 C 1307.9392529540828,198.3591688915911 1373.9696264770414,199.17958444579557 1440,200 C 1440,200 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 200)"></path>
-      </svg>
-    </div>
-  </section>
-  <section id="menu_area">
-    <div class="main_area-container">
-      <div class="container">
-        <div class="row justify-content-center align-items-center pb-5 gap-5">
-          <div class="col-md-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-              <img src="{% static 'img/dessert.jpg' %}" class="card-img-top card_image" alt="404 | Error Image Not Found" />
-              <div class="card-body">
-                <h3 class="card-title">Dessets</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis nemo, iusto ex error illo.</p>
-                <a href="#" class="btn btn-primary">Check recipes</a>
-              </div>
-            </div>
+  </div>
+</section>
+<hr />
+<section id="recipes">
+  <div class="famous-recipes">
+    <div class="container">
+      <div class="card text-center">
+        <div class="card-header">Something Special</div>
+        <div class="card-body">
+          <div class="card_title">
+            <p class="card-title">
+              Special title treatment <small>*2 days ago</small>
+            </p>
           </div>
-          <div class="col-md-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-              <img src="{% static 'img/sandwich.jpg' %}" class="card-img-top card_image" alt="404 | Error Image Not Found" />
-              <div class="card-body">
-                <h3 class="card-title">Sandwich</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis nemo, iusto ex error illo.</p>
-                <a href="#" class="btn btn-primary">Check recipes</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-              <img src="{% static 'img/non-veg.jpg' %}" class="card-img-top card_image" alt="404 | Error Image Not Found" />
-              <div class="card-body">
-                <h3 class="card-title">Eggs and Meat</h3>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor facilis nemo, iusto ex error illo.</p>
-                <a href="#" class="btn btn-primary">Check recipes</a>
-              </div>
-            </div>
-          </div>
+          <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam unde, quisquam
+            perferendis tempora voluptas quidem qui ipsam aperiam culpa deleniti architecto suscipit quos voluptates
+            ducimus, laborum perspiciatis quam repellat voluptatem! Rem saepe at nemo ut.</p>
+          <a href="#" class="btn btn-primary">Read Now</a>
         </div>
       </div>
-    </div>
-  </section>
-  <hr />
-  <section id="recipes">
-    <div class="famous-recipes">
-      <div class="container">
-        <div class="card text-center">
-          <div class="card-header">Something Special</div>
-          <div class="card-body">
-            <div class="card_title">
-              <p class="card-title">
-                Special title treatment <small>*2 days ago</small>
-              </p>
-            </div>
-            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam unde, quisquam perferendis tempora voluptas quidem qui ipsam aperiam culpa deleniti architecto suscipit quos voluptates ducimus, laborum perspiciatis quam repellat voluptatem! Rem saepe at nemo ut.</p>
-            <a href="#" class="btn btn-primary">Read Now</a>
-          </div>
-        </div>
-        <div class="row mt-3 justify-content-center align-items-center">
-          <div class="col-md-6">
-            <div class="card text-center">
-              <div class="card-header">Something Special</div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-4 d-flex align-items-center">
-                    <img src="{% static 'img/special food 1.jpg' %}" class="img-fluid special-item_img" alt="404 | Error Image not Found" />
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card_title">
-                      <p class="card-title">
-                        Special title treatment <small>*2 days ago</small>
-                      </p>
-                    </div>
-                    <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam unde, quisquam perferendis tempora voluptas quidem qui ipsam aperiam culpa deleniti architecto suscipit quos voluptates ducimus, laborum perspiciatis quam repellat voluptatem! Rem saepe at nemo ut.</p>
-                  </div>
+      <div class="row mt-3 justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="card text-center">
+            <div class="card-header">Something Special</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4 d-flex align-items-center">
+                  <img src="{% static 'img/special food 1.jpg' %}" class="img-fluid special-item_img"
+                    alt="404 | Error Image not Found" />
                 </div>
-                <hr />
-                <a href="#" class="btn btn-primary">Read Now</a>
+                <div class="col-md-8">
+                  <div class="card_title">
+                    <p class="card-title">
+                      Special title treatment <small>*2 days ago</small>
+                    </p>
+                  </div>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam unde, quisquam
+                    perferendis tempora voluptas quidem qui ipsam aperiam culpa deleniti architecto suscipit quos
+                    voluptates ducimus, laborum perspiciatis quam repellat voluptatem! Rem saepe at nemo ut.</p>
+                </div>
               </div>
+              <hr />
+              <a href="#" class="btn btn-primary">Read Now</a>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="card text-center">
-              <div class="card-header">Something Special</div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-4 d-flex align-items-center">
-                    <img src="{% static 'img/special food 2.jpg' %}" class="img-fluid special-item_img" alt="404 | Error Image not Found" />
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card_title">
-                      <p class="card-title">
-                        Special title treatment <small>*2 days ago</small>
-                      </p>
-                    </div>
-                    <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam unde, quisquam perferendis tempora voluptas quidem qui ipsam aperiam culpa deleniti architecto suscipit quos voluptates ducimus, laborum perspiciatis quam repellat voluptatem! Rem saepe at nemo ut.</p>
-                  </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card text-center">
+            <div class="card-header">Something Special</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4 d-flex align-items-center">
+                  <img src="{% static 'img/special food 2.jpg' %}" class="img-fluid special-item_img"
+                    alt="404 | Error Image not Found" />
                 </div>
-                <hr />
-                <a href="#" class="btn btn-primary">Read Now</a>
+                <div class="col-md-8">
+                  <div class="card_title">
+                    <p class="card-title">
+                      Special title treatment <small>*2 days ago</small>
+                    </p>
+                  </div>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam unde, quisquam
+                    perferendis tempora voluptas quidem qui ipsam aperiam culpa deleniti architecto suscipit quos
+                    voluptates ducimus, laborum perspiciatis quam repellat voluptatem! Rem saepe at nemo ut.</p>
+                </div>
               </div>
+              <hr />
+              <a href="#" class="btn btn-primary">Read Now</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- footer area -->
-  <section id="footer">
-    <div class="footer_area">
-      <div class="wave-svg_area">
-        <img src="{% static 'img/footer-wave.png' %}" class="img-fluid footer_img" alt="" />
-      </div>
+  </div>
+</section>
+<!-- footer area -->
+<section id="footer">
+  <div class="footer_area">
+    <div class="wave-svg_area">
+      <img src="{% static 'img/footer-wave.png' %}" class="img-fluid footer_img" alt="" />
     </div>
-  </section>
+  </div>
+</section>
 {% endblock body_content %}
