@@ -46,6 +46,14 @@
     </div>
   </nav>
   <!-- navbar end -->
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert fade show message" role="alert">
+        <p> {{ message }} </p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+  {% endif %}
   <section id="banner_area">
     <div class="banner pt-5">
       <div class="container pt-5">
